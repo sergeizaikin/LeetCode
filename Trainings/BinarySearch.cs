@@ -36,5 +36,35 @@ namespace LeetCode.Trainings
 
             return -1;
         }
+
+        public static int MySqrt(int x)
+        {
+            long startIdx = 0;
+            long endIdx = x;
+
+            if (x == 1)
+                return x;
+
+            while (endIdx - startIdx > 1)
+            {
+                long midIdx = startIdx + (endIdx - startIdx) / 2;
+
+                if(midIdx * midIdx == x)
+                {
+                    return (int)midIdx;
+                }
+                else if(midIdx * midIdx < x)
+                {
+                    startIdx = midIdx;
+                }
+                else
+                {
+                    endIdx = midIdx;
+                }
+            }
+
+            return (int)startIdx;
+        }
+
     }
 }
