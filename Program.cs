@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeetCode.Trainings;
+using System;
 
 namespace LeetCode
 {
@@ -6,7 +7,12 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var nums = new int[] { -1, 0, 3, 5, 9, 12 };
+            var target = -1;
+
+            var index = BinarySearch.Search(nums, target);
+
+            
         }
     }
 }
