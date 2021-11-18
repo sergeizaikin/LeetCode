@@ -11,7 +11,10 @@ namespace LeetCode
             var target = -1;
 
             //var index = BinarySearch.Search(nums, target);
-            var sqrt = BinarySearch.MySqrt(2147483647);
+            //var sqrt = BinarySearch.MySqrt(17);
+            var guessedNum = BinarySearch.GuessGame(2);
+            Console.WriteLine($"Your number is {guessedNum}");
+
 
 
         }
