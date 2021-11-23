@@ -7,7 +7,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            var nums = new int[] { 3, 1 };
+            var nums = new int[] { 3, 1 ,2 };
             var target = 1;
 
             //var index = BinarySearch.Search(nums, target);
@@ -15,7 +15,11 @@ namespace LeetCode
             //var guessedNum = BinarySearch.GuessGame(2);
             //Console.WriteLine($"Your number is {guessedNum}");
 
-            var idx = BinarySearch.SearchInRotatedSortedArray(nums, target);
+            //var idx = BinarySearch.SearchInRotatedSortedArray(nums, target);
+
+            //var firstBadVersion = BinarySearch.VersionControl(2, 2);
+
+            var firstBadVersion = BinarySearch.PeakElement(nums);
 
 
 

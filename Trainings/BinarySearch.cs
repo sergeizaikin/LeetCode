@@ -8,7 +8,7 @@ namespace LeetCode.Trainings
 {
     static class BinarySearch
     {
-        public static int Search(int[] nums, int target, int? first = null, int? last = null)
+        public static int SearchTemplateI(int[] nums, int target, int? first = null, int? last = null)
         {
             if (first == null || last == null)
             {
@@ -27,11 +27,11 @@ namespace LeetCode.Trainings
 
             if (target < middleValue)
             {
-                return Search(nums, target, first, middleIndex - 1);
+                return SearchTemplateI(nums, target, first, middleIndex - 1);
             }
             else
             {
-                return Search(nums, target, middleIndex + 1, last);
+                return SearchTemplateI(nums, target, middleIndex + 1, last);
             }
 
             return -1;
@@ -199,6 +199,81 @@ namespace LeetCode.Trainings
 
             return -1;
 
+        }
+
+        public static int SearchTemplateII(int [] nums, int target)
+        {
+            if (nums == null || nums.Length == 0)
+                return -1;
+
+            int leftIdx = 0;
+            int rightIdx = nums.Length;
+
+            while(leftIdx < rightIdx)
+            {
+                int midIdx = leftIdx + (rightIdx - leftIdx) / 2;
+                int currValue = nums[midIdx];
+
+                if (currValue == target)
+                    return midIdx;
+                else if (currValue > target)
+                    leftIdx = midIdx + 1;
+                else
+                    rightIdx = midIdx;
+            }
+
+
+            if (leftIdx != nums.Length && nums[leftIdx] == target)
+                return leftIdx;
+            return -1;
+        }
+
+        public static int VersionControl(int n, int firstBadVersion)
+        {
+            int left = 0;
+            int right = n;
+
+            while(left < right)
+            {
+                int mid = left + (right - left) / 2;
+
+                if (IsBadVersion(mid, firstBadVersion) && IsBadVersion(mid - 1, firstBadVersion))
+                    right = mid;
+                else if (!IsBadVersion(mid, firstBadVersion) && !IsBadVersion(mid + 1, firstBadVersion))
+                    left = mid + 1;
+                else if (!IsBadVersion(mid, firstBadVersion) && IsBadVersion(mid + 1, firstBadVersion))
+                    return mid + 1;
+                else if (IsBadVersion(mid, firstBadVersion) && !IsBadVersion(mid - 1, firstBadVersion))
+                    return mid;
+            }
+
+            return -1;
+        }
+
+        private static bool IsBadVersion(int version, int badVersion)
+        {
+            return version >= badVersion;
+        }
+
+        public static int PeakElement(int[] nums)
+        {
+            if (nums.Length == 1)
+                return 0;
+
+            int left = 0;
+            int right = nums.Length - 1;
+
+            while (left < right)
+            {
+                int mid = left + (right - left) / 2;
+
+                if (nums[mid] > nums[mid + 1]) // The peak is on the left side
+                    right = mid;
+                else                          // The peak is on the right side
+                    left = mid + 1;
+            }
+
+            return left;
         }
     }
 }
