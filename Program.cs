@@ -7,7 +7,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            var nums = new int[] { 3, 1 ,2 };
+            var nums = new int[] { 3, 4, 5, 1, 2 };
             var target = 1;
 
             //var index = BinarySearch.Search(nums, target);
@@ -19,7 +19,9 @@ namespace LeetCode
 
             //var firstBadVersion = BinarySearch.VersionControl(2, 2);
 
-            var firstBadVersion = BinarySearch.PeakElement(nums);
+            //var firstBadVersion = BinarySearch.PeakElement(nums);
+
+            var minVal = BinarySearch.FindMinimumInRotatedArray(nums);
 
 
 

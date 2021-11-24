@@ -201,7 +201,7 @@ namespace LeetCode.Trainings
 
         }
 
-        public static int SearchTemplateII(int [] nums, int target)
+        public static int SearchTemplateII(int[] nums, int target)
         {
             if (nums == null || nums.Length == 0)
                 return -1;
@@ -209,7 +209,7 @@ namespace LeetCode.Trainings
             int leftIdx = 0;
             int rightIdx = nums.Length;
 
-            while(leftIdx < rightIdx)
+            while (leftIdx < rightIdx)
             {
                 int midIdx = leftIdx + (rightIdx - leftIdx) / 2;
                 int currValue = nums[midIdx];
@@ -233,7 +233,7 @@ namespace LeetCode.Trainings
             int left = 0;
             int right = n;
 
-            while(left < right)
+            while (left < right)
             {
                 int mid = left + (right - left) / 2;
 
@@ -274,6 +274,36 @@ namespace LeetCode.Trainings
             }
 
             return left;
+        }
+
+        public static int FindMinimumInRotatedArray(int[] nums)
+        {
+            if (nums.Length == 1)
+                return nums[0];
+
+            int left = 0;
+            int right = nums.Length - 1;
+
+            if (nums[0] > nums[nums.Length - 1]) // Rotated
+            {
+                while (left < right)
+                {
+                    int mid = left + (right - left) / 2;
+
+                    if (nums[mid] > nums[nums.Length - 1])
+                        left = mid + 1;
+                    else
+                        right = mid;
+                }
+
+                return nums[left];
+            }
+            else // If not rotated
+            {
+                return nums[0];
+            }
+
+            return -1;
         }
     }
 }
