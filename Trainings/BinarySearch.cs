@@ -305,5 +305,46 @@ namespace LeetCode.Trainings
 
             return -1;
         }
+
+        public static int[] SearchRange(int[] nums, int target)
+        {
+            if (nums == null || nums.Length == 0)
+                return new int[] { -1, -1 };
+
+            int left = 0;
+            int right = nums.Length - 1;
+            
+            // Search for the start index
+            while(left < right)
+            {
+                int mid = left + (right - left) / 2;
+
+                if (target <= nums[mid])
+                    right = mid;
+                else
+                    left = mid + 1;
+            }
+
+            int startIndex = nums[left] == target ? left : -1;
+
+            left = 0;
+            right = nums.Length - 1;
+
+            // Search for the end index
+            while (left < right)
+            {
+                int mid = (left + (right - left) / 2) + 1;
+
+                if (target < nums[mid])
+                    right = mid - 1;
+                else
+                    left = mid;
+            }
+
+            int endIndex = nums[right] == target ? right : -1;
+
+
+            return new int[] { startIndex, endIndex };
+        }
     }
 }
